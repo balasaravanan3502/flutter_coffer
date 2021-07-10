@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "163039229349",
+    "project_id": "blackcoffer-2ba03",
+    "storage_bucket": "blackcoffer-2ba03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163039229349:android:4e2635668ca263be9aa44c",
+        "android_client_info": {
+          "package_name": "com.example.flutter_task_coffer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163039229349-5gmguceheroeqsnqnqopsj5r9epehep6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxdXKiB3U6jWOjQNajJVaflzuCVrvdg7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163039229349-5gmguceheroeqsnqnqopsj5r9epehep6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
