@@ -169,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {
                         sendOTP();
                       },
-                      child: Text('Did not get OTP,resend?'),
+                      child: Text('Did not get OTP, resend?'),
                     ),
                   ),
                 Container(
@@ -184,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(13.0),
                         child: Text(
-                          'Submit',
+                          otpState ? 'Submit' : 'Next',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -198,6 +198,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         _textField.text = '';
                       }),
                 ),
+                if (otpState)
+                  Center(
+                    child: MaterialButton(
+                      onPressed: () {
+                        setState(() {
+                          otpState = false;
+                          _textField.text = number;
+                          isValid = true;
+                        });
+                      },
+                      child: Text('Back'),
+                    ),
+                  ),
               ],
             ),
           ),
