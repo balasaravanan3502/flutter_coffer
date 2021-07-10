@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_task_coffer/Provider/VideoData.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_task_coffer/Screens/HomeScreen.dart';
@@ -52,15 +54,27 @@ class _LoginScreenState extends State<LoginScreen> {
             await _auth.signInWithCredential(phoneAuthCredential);
 
         if (authCredential.user != null) {
+          print(phoneAuthCredential);
           print(authCredential.user!.uid);
           SharedPreferences _loginData = await SharedPreferences.getInstance();
           _loginData.setString('uid', authCredential.user!.uid);
           await FirebaseFirestore.instance
               .collection('users')
               .doc(authCredential.user!.uid)
-              .set({
-            'userpic':
-                'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png',
+              .get()
+              .then((DocumentSnapshot snapshot) {
+            if (!snapshot.exists) {
+              FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(authCredential.user!.uid)
+                  .set({
+                'userpic':
+                    'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png',
+              });
+            } else {
+              final provider = Provider.of<VideoData>(context, listen: false);
+              provider.fetchData();
+            }
           });
 
           Navigator.push(
